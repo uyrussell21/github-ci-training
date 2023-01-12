@@ -21,3 +21,4 @@ jobs:
         run: exit 1
       - name: The demo step has failed
         if: ${{ failure() && steps.demo.conclusion == 'failure' }}
+        run: echo after fail check
