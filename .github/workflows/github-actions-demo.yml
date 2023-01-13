@@ -4,6 +4,7 @@ on: [push]
 
 env:
   TEST: inside workflow
+  TEST2: another var
 
 jobs:
   Explore-GitHub-Actions:
@@ -16,6 +17,7 @@ jobs:
           echo "test var dollar $TEST"
           echo "test var template ${{ vars.TEST }}"
           echo "test env template ${{ env.TEST }}"
+          echo test env ${{ env.TEST2 }} and var dollar $TEST2 and var template ${{ vars.TEST2 }}
         env:
           TEST: inside job
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
