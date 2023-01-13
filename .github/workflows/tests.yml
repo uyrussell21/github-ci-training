@@ -6,14 +6,12 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     steps:
-      - name: debugging workflow
-        run: echo ${{ github.event_name }}
-      # - uses: actions/checkout@v3
-      # - uses: actions/setup-node@v3
-      #   with:
-      #     node-version: 18
-      #     cache: "npm"
-      # - name: Install Packages
-      #   run: npm ci
-      # - name: Run Tests
-      #   run: npm test
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "npm"
+      - name: Install Packages
+        run: npm ci
+      - name: Run Tests
+        run: npm test
