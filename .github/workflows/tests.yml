@@ -15,3 +15,5 @@ jobs:
         run: npm ci --legacy-peer-deps
       - name: Run Tests
         run: npm test
+      - name: After success
+        run: echo successful tests
