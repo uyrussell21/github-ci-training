@@ -142,7 +142,7 @@ const IndexPage: React.FC = () => {
         <span style={headingAccentStyles}>— on GitHub Pages</span>
       </h1>
       <p style={paragraphStyles}>Hello world! 🌏 Paragraph text</p>
-      <small>v 0.3</small>
+      <small>v 0.4</small>
       <hr />
       <ul style={doclistStyles}>
         {docLinks.map((doc) => (
