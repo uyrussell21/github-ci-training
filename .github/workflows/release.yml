@@ -3,9 +3,9 @@ on:
   workflow_run:
     workflows:
       - "Run Tests"
-    branches:
-      - "main"
-      - "3-setup-workflows"
+    # branches:
+    #   - "main"
+    #   - "3-setup-workflows"
     types:
       - "completed"
 
