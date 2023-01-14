@@ -5,6 +5,7 @@ on:
       - "Run Tests"
     branches:
       - "main"
+      - "3-setup-workflows"
     types:
       - "completed"
 
