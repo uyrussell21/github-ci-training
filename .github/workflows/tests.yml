@@ -1,17 +1,15 @@
 name: Run Tests
 
 on:
-  push:
-    branches:
-      - "main"
   pull_request:
+  workflow_call:
 
 jobs:
   early:
     runs-on: ubuntu-latest
     steps:
       - name: echo test
-        run: echo test
+        run: echo "${{ vars.RUN_TESTS }}"
 
   tests:
     if: ${{ vars.RUN_TESTS == 'true' }}

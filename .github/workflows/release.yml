@@ -1,17 +1,15 @@
 name: Build and Deploy
 on:
-  workflow_run:
-    workflows:
-      - "Run Tests"
+  push:
     branches:
       - "main"
       - "3-setup-workflows"
-    types:
-      - "completed"
 
 jobs:
+  tests:
+    uses: ./.github/workflows/tests.yml
   build:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    needs: tests
     runs-on: ubuntu-latest
     steps:
       - name: echo stuff
