@@ -1,0 +1,18 @@
+name: Build and Deploy
+on:
+  workflow_run:
+    workflows:
+      - "Run Tests"
+    branches:
+      - "main"
+    types:
+      - "completed"
+
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo stuff
+        run: echo $EVT
+        env:
+          EVT: ${{ toJSON(github.event) }}
