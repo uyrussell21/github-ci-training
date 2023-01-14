@@ -1,0 +1,14 @@
+name: Build and Deploy
+on:
+  workflow_run:
+    workflows:
+      - "Run Tests"
+    types:
+      - "completed"
+
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo stuff
+        run: echo ${{ toJSON(github.event) }}
