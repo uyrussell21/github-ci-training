@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: stop job early
-        if: vars.RUN_TESTS == 'false'
+        if: ${{ vars.RUN_TESTS == 'false' }}
         run: exit 0
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
