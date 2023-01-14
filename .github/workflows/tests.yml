@@ -3,7 +3,14 @@ name: Run Tests
 on: [push]
 
 jobs:
+  early:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo test
+        run: echo test
+
   tests:
+    if: ${{ vars.RUN_TESTS == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
