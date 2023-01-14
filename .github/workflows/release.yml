@@ -10,11 +10,9 @@ on:
       - "completed"
 
 jobs:
-  echo:
+  build:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - name: echo stuff
-        run: echo $EVT
-        env:
-          EVT: ${{ toJSON(github.event) }}
+        run: echo building
