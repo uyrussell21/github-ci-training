@@ -6,8 +6,8 @@ on:
       - "main"
   pull_request:
     # TODO: REMOVE BEFORE MERGING
-    # branches-ignore:
-    #   - "3-setup-workflows"
+    branches-ignore:
+      - "3-setup-workflows"
   workflow_call:
 
 jobs:
