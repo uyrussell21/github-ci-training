@@ -1,4 +1,5 @@
 name: Setup node and install packages
+description: Install node packages
 
 runs:
   using: "composite"
@@ -8,4 +9,5 @@ runs:
         node-version: 18
         cache: "npm"
     - name: Install Packages
+      shell: bash
       run: npm ci --legacy-peer-deps
