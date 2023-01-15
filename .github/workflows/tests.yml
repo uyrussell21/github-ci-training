@@ -1,11 +1,18 @@
 name: Run Tests
 
 on:
+  push:
+    branches:
+      - "main"
   pull_request:
+    # TODO: REMOVE BEFORE MERGING
+    # branches-ignore:
+    #   - "3-setup-workflows"
   workflow_call:
 
 jobs:
   early:
+    if: ${{ vars.RUN_TESTS != 'true' }}
     runs-on: ubuntu-latest
     steps:
       - name: echo test
@@ -15,15 +22,6 @@ jobs:
     if: ${{ vars.RUN_TESTS == 'true' }}
     runs-on: ubuntu-latest
     steps:
-      - name: stop job early
-        if: ${{ vars.RUN_TESTS == 'false' }}
-        run: exit 0
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: "npm"
-      - name: Install Packages
-        run: npm ci --legacy-peer-deps
+      - uses: ./.github/actions/setup.yml
       - name: Run Tests
         run: npm test
