@@ -22,6 +22,7 @@ jobs:
     if: ${{ vars.RUN_TESTS == 'true' }}
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - uses: ./.github/actions/setup.yml
       - name: Run Tests
         run: npm test
