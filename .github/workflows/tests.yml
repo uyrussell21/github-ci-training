@@ -25,7 +25,7 @@ jobs:
       - run: semgrep ci --sarif > semgrep.sarif
         env:
           # Add the rules that Semgrep uses by setting the SEMGREP_RULES environment variable.
-          SEMGREP_RULES: p/react # more at semgrep.dev/explore
+          SEMGREP_RULES: "p/default p/react" # more at semgrep.dev/explore
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v2
         with:
