@@ -3,7 +3,7 @@ name: Test, Build and Deploy dev
 on:
   push:
     branches:
-      - "release/gh-pages"
+      - "main"
   workflow_dispatch:
 
 permissions:
