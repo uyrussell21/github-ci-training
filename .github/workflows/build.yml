@@ -21,11 +21,6 @@ jobs:
         env:
           PREFIX_PATHS: "true"
         run: npm run build
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: ${{ inputs.artifact-name }}
-          path: public/
       - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v1
         with:
