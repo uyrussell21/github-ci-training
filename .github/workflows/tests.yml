@@ -8,15 +8,7 @@ on:
   workflow_call:
 
 jobs:
-  early:
-    if: ${{ vars.RUN_TESTS != 'true' }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: echo test
-        run: echo "${{ vars.RUN_TESTS }}"
-
   tests:
-    if: ${{ vars.RUN_TESTS == 'true'  }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
