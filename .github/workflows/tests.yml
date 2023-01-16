@@ -13,7 +13,7 @@ jobs:
       - name: Run Tests
         run: npm test
   semgrep:
-    name: Scan
+    name: Semgrep Scan
     runs-on: ubuntu-latest
     container:
       image: returntocorp/semgrep
