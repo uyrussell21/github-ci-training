@@ -6,7 +6,7 @@ on:
       artifact-name:
         type: string
         required: false
-        default: public-artifact
+        default: public-pages
 
 jobs:
   build:
@@ -14,10 +14,19 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/setup
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+        with:
+          static_site_generator: gatsby
       - name: Build to public folder
+        env:
+          PREFIX_PATHS: "true"
         run: npm run build
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: ${{ inputs.artifact-name }}
+          path: public/
+      - uses: actions/upload-pages-artifact@v1
+        with:
           path: public/
