@@ -9,12 +9,8 @@ on:
 jobs:
   tests:
     uses: ./.github/workflows/tests.yml
-  semgrep:
-    uses: ./.github/workflows/semgrep.yml
   build:
-    needs:
-      - tests
-      - semgrep
+    needs: tests
     uses: ./.github/workflows/build.yml
   deploy:
     permissions:
