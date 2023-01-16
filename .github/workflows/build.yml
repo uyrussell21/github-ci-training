@@ -2,11 +2,6 @@ name: Build
 
 on:
   workflow_call:
-    inputs:
-      artifact-name:
-        type: string
-        required: false
-        default: public-pages
 
 jobs:
   build:
@@ -14,12 +9,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/setup
+      - name: Display gatsby-config before configure
+        run: cat gatsby-config.ts
       - name: Setup Pages
         uses: actions/configure-pages@v2
         with:
           static_site_generator: gatsby
+      - name: Display gatsby-config after configure
+        run: cat gatsby-config.ts
       - name: Build to public folder
-        run: npm run build --prefix-paths
+        env:
+          PREFIX_PATHS: "true"
+        run: npm run build
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
