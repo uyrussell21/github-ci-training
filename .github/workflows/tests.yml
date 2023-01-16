@@ -3,6 +3,7 @@ name: Run Tests
 on:
   pull_request:
   workflow_call:
+  workflow_dispatch:
 
 jobs:
   tests:
@@ -22,10 +23,10 @@ jobs:
     if: (github.actor != 'dependabot[bot]')
     steps:
       - uses: actions/checkout@v3
-      - run: semgrep ci --sarif > semgrep.sarif
-        env:
-          # Add the rules that Semgrep uses by setting the SEMGREP_RULES environment variable.
-          SEMGREP_RULES: "p/default p/react" # more at semgrep.dev/explore
+      - run: semgrep ci --config=auto --sarif > semgrep.sarif
+        # env:
+        #   # Add the rules that Semgrep uses by setting the SEMGREP_RULES environment variable.
+        #   SEMGREP_RULES: "p/default p/react" # more at semgrep.dev/explore
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v2
         with:
