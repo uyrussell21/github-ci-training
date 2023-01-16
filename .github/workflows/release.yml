@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - "release/gh-pages"
-      # TODO: REMOVE BEFORE MERGING
-      - "3-setup-workflows"
   workflow_dispatch:
 
 permissions:
