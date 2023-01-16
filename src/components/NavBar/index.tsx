@@ -1,3 +1,4 @@
+import { Link } from "gatsby";
 import React from "react";
 import * as moduleStyles from "./styles.module.css";
 
@@ -21,14 +22,14 @@ const NavBar: React.FC = () => {
     <nav style={styles.navBarStyles}>
       <ul className={moduleStyles.list}>
         <li>
-          <a href="/" className={moduleStyles.link}>
+          <Link to="/" className={moduleStyles.link}>
             Home
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="/about" className={moduleStyles.link}>
+          <Link to="/about" className={moduleStyles.link}>
             About
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>

@@ -1,0 +1,13 @@
+name: Setup node and install packages
+description: Install node packages
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 18
+        cache: "npm"
+    - name: Install Packages
+      shell: bash
+      run: npm ci --legacy-peer-deps

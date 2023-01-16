@@ -1,0 +1,23 @@
+name: Build
+
+on:
+  workflow_call:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/setup
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+        with:
+          static_site_generator: gatsby
+      - name: Build to public folder
+        env:
+          PREFIX_PATHS: "true"
+        run: npm run build
+      - name: Upload pages artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: public/

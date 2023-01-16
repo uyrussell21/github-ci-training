@@ -1,24 +1,17 @@
 name: Run Tests
 
-on: [push]
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+  workflow_call:
 
 jobs:
-  early:
-    runs-on: ubuntu-latest
-    steps:
-      - name: echo test
-        run: echo test
-
   tests:
-    if: ${{ vars.RUN_TESTS == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: "npm"
-      - name: Install Packages
-        run: npm ci --legacy-peer-deps
+      - uses: ./.github/actions/setup
       - name: Run Tests
         run: npm test
