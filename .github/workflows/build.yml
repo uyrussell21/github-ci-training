@@ -9,14 +9,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/setup
-      - name: Display gatsby-config before configure
-        run: cat gatsby-config.ts
       - name: Setup Pages
         uses: actions/configure-pages@v2
         with:
           static_site_generator: gatsby
-      - name: Display gatsby-config after configure
-        run: cat gatsby-config.ts
       - name: Build to public folder
         env:
           PREFIX_PATHS: "true"
