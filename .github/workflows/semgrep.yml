@@ -2,22 +2,32 @@ on:
   pull_request: {}
   push:
     branches:
-    - main
-    - master
+      - main
+      - master
     paths:
-    - .github/workflows/semgrep.yml
+      - .github/workflows/semgrep.yml
+  workflow_call:
   schedule:
-  # random HH:MM to avoid a load spike on GitHub Actions at 00:00
-  - cron: 48 2 * * *
+    # random HH:MM to avoid a load spike on GitHub Actions at 00:00
+    - cron: 48 2 * * *
 name: Semgrep
 jobs:
   semgrep:
-    name: Scan
+    name: Semgrep Scan
     runs-on: ubuntu-20.04
     env:
       SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
     container:
       image: returntocorp/semgrep
     steps:
-    - uses: actions/checkout@v3
-    - run: semgrep ci
+      - uses: actions/checkout@v3
+      - run: semgrep ci
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: semgrep.sarif
+          # Optional category for the results
+          # Used to differentiate multiple results for one commit
+          category: semgrep
+        continue-on-error: true
+        if: always()
