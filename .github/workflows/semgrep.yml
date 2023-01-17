@@ -4,6 +4,9 @@ on:
   pull_request:
   workflow_call:
   workflow_dispatch:
+  schedule:
+    # random HH:MM to avoid a load spike on GitHub Actions at 00:00
+    - cron: "15 11 * * *"
 
 jobs:
   semgrep:
