@@ -13,13 +13,7 @@ jobs:
       image: returntocorp/semgrep
     steps:
       - uses: actions/checkout@v3
-      - run: semgrep ci
-        env:
-          SEMGREP_RULES: >-
-            p/default
-            p/javascript
-            p/typescript
-            p/react
+      - run: semgrep ci --config=auto
       # - name: Upload SARIF file
       #   uses: github/codeql-action/upload-sarif@v2
       #   with:
