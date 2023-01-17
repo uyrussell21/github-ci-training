@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   schedule:
     # random HH:MM to avoid a load spike on GitHub Actions at 00:00
-    - cron: "15 11 * * *"
+    - cron: "20 3 * * *"
 
 jobs:
   semgrep:
