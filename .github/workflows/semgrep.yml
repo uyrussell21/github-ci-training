@@ -13,13 +13,13 @@ jobs:
       image: returntocorp/semgrep
     steps:
       - uses: actions/checkout@v3
-      - run: semgrep ci --config=auto
-      # - name: Upload SARIF file
-      #   uses: github/codeql-action/upload-sarif@v2
-      #   with:
-      #     sarif_file: semgrep.sarif
-      #     # Optional category for the results
-      #     # Used to differentiate multiple results for one commit
-      #     category: semgrep
-      #   continue-on-error: true
-      #   if: always()
+      - run: semgrep ci --config=auto --sarif --output=semgrep.sarif
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: semgrep.sarif
+          # Optional category for the results
+          # Used to differentiate multiple results for one commit
+          category: semgrep
+        continue-on-error: true
+        if: always()
