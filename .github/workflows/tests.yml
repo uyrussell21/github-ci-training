@@ -4,12 +4,18 @@ on:
   pull_request:
   workflow_call:
   workflow_dispatch:
+    inputs:
+      version:
+        description: "Testing version"
+        required: false
+        default: "v1"
 
 jobs:
   tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/actions/setup
+      - name: Running actions ${{ inputs.version }}
+        uses: ./.github/actions/setup
       - name: Run Tests
         run: npm test
