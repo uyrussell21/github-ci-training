@@ -1,6 +1,7 @@
 name: Run Tests
 
 on:
+  push:
   pull_request:
   workflow_call:
   workflow_dispatch:
@@ -19,4 +20,4 @@ jobs:
         uses: ./.github/actions/setup
       - name: Run Tests
         run: npm test
-      - run: echo "Finished"
+      - run: echo "Finished 1"
