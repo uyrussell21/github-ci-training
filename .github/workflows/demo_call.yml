@@ -1,0 +1,17 @@
+name: Run Tests
+
+on:
+  workflow_call:
+    inputs:
+      stuff:
+        description: "Testing stuff"
+        required: false
+        default: "v1"
+        type: string
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ inputs.stuff }}
+      - run: echo "Finished 1"
