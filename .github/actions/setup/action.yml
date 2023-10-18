@@ -1,12 +1,19 @@
 name: Setup node and install packages
 description: Install node packages
 
+inputs:
+  node-version:
+    description: NodeJS version to use
+    required: false
+    default: "18.15.0"
+
 runs:
   using: "composite"
   steps:
-    - uses: actions/setup-node@v3
+    - name: Install NodeJS ver. ${{ inputs.node-version }}
+      uses: actions/setup-node@v3
       with:
-        node-version: 18
+        node-version: ${{ inputs.node-version }}
         cache: "npm"
     - name: Install Packages
       shell: bash

@@ -8,7 +8,7 @@ on:
       version:
         description: "Testing version"
         required: false
-        default: "v1"
+        default: "v2"
 
 jobs:
   tests:
@@ -19,3 +19,4 @@ jobs:
         uses: ./.github/actions/setup
       - name: Run Tests
         run: npm test
+      - run: echo "Finished"
