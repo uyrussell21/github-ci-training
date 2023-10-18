@@ -2,6 +2,12 @@ name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on:
   push:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Environment to run the workflow
+        required: false
+        type: string
 
 jobs:
   Explore-GitHub-Actions:
@@ -24,5 +30,5 @@ jobs:
   Test-Call:
     uses: ./.github/workflows/demo_call.yml
     with:
-      stuff: ${{ github.ref == 'refs/heads/main' && 'main' || startsWith(github.ref, 'refs/heads/test-') && 'test' || 'dev' }}
+      stuff: ${{ inputs.environment || github.ref == 'refs/heads/main' && 'main' || startsWith(github.ref, 'refs/heads/test-') && 'test' || 'dev' }}
 
