@@ -1,6 +1,7 @@
 name: Run Tests
 
 on:
+  push:
   workflow_call:
     inputs:
       stuff:
@@ -15,3 +16,8 @@ jobs:
     steps:
       - run: echo ${{ inputs.stuff }}
       - run: echo "Finished 1"
+
+  event-name:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo name ${{ github.event_name }}
