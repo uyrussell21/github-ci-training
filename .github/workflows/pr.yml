@@ -1,0 +1,12 @@
+name: PR test
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  first:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo got pr
