@@ -24,12 +24,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo second job
-      - uses: actions/checkout@v4
-
-      - name: echo secret
-        env:
-          supersecret: ${{ secrets.SECRET_1 }}
-        run: . ./test-secret.sh $supersecret
 
   third:
     if: ${{ false }}
@@ -41,10 +35,13 @@ jobs:
     name: Fourth Job
     environment: test
     needs:
+      - third
       - second
     runs-on: ubuntu-latest
     steps:
       - run: echo fourth job
+      - run: second:${{ needs.second.result }}
+      - run: third:${{ needs.third.result }}
       - uses: actions/checkout@v4
       - uses: ./.github/actions/test-vars
         with:
