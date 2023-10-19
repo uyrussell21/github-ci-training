@@ -9,7 +9,6 @@ on:
         default: "v2-fork-subdir-2"
         type: string    
   workflow_dispatch:
-    inputs:
 
 jobs:
   tests:
