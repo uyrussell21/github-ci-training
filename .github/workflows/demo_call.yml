@@ -38,6 +38,7 @@ jobs:
       - third
       - second
     runs-on: ubuntu-latest
+    if: always()
     steps:
       - run: echo fourth job
       - run: second:${{ needs.second.result }}
