@@ -17,3 +17,8 @@ runs:
 
     - shell: bash
       run: echo ${{ inputs.secret1 }}
+      name: echo secret
+
+    - shell: bash
+      run: echo ${{ inputs.secret1  == 'hello_secret' && 'right' || 'wrong' }}
+      name: echo secret condition
