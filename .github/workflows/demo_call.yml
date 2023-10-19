@@ -37,6 +37,7 @@ jobs:
       - run: echo never runs
 
   fourth:
+    name: Fourth Job
     environment: test
     needs:
       - second
