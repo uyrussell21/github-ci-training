@@ -41,8 +41,8 @@ jobs:
     if: always()
     steps:
       - run: echo fourth job
-      - run: second:${{ needs.second.result }}
-      - run: third:${{ needs.third.result }}
+      - run: echo second:${{ needs.second.result }}
+      - run: echo third:${{ needs.third.result }}
       - uses: actions/checkout@v4
       - uses: ./.github/actions/test-vars
         with:
