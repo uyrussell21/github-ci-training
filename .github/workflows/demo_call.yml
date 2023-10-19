@@ -8,9 +8,22 @@ on:
         required: false
         default: "v1"
         type: string
+      ref-prefix:
+        description: "Ref prefix"
+        required: false
+        default: "v1"
+        type: string
+      ref:
+        description: "Ref"
+        required: false
+        default: "v1"
+        type: string
 
 jobs:
   tests:
+    if: |
+      inputs.ref-prefix && startsWith(github.ref, inputs.ref-prefix) ||
+      github.ref == inputs.ref
     runs-on: ubuntu-latest
     steps:
       - run: echo ${{ inputs.stuff }}

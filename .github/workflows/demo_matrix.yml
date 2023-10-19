@@ -13,10 +13,7 @@ jobs:
           - ref-prefix: test-
             env: test
     uses: ./.github/workflows/demo_call.yml
-    if: |
-      matrix.ref-prefix && startsWith(github.ref, matrix.ref-prefix) ||
-      github.ref == matrix.ref
     with:
       stuff: ${{ matrix.env }}
-
-
+      ref-prefix: ${{ matrix.ref-prefix }}
+      ref: ${{ matrix.ref }}
