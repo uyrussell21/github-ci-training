@@ -38,4 +38,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo fourth job
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/test-vars
