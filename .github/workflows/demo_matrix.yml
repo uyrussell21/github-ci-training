@@ -10,7 +10,7 @@ jobs:
         include:
           - ref: refs/heads/main
             env: in-main
-          - ref-prefix: refs/heads/test-
+          - ref-prefix: refs/heads/test
             env: test
     uses: ./.github/workflows/demo_call.yml
     with:
