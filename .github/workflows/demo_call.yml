@@ -1,6 +1,7 @@
 name: Run Demo Call
 
 on:
+  push:
   workflow_call:
     inputs:
       stuff:
