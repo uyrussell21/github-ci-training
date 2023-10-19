@@ -1,0 +1,20 @@
+name: Run Tests
+
+on:
+  push:
+
+jobs:
+  test-matrix:
+    strategy:
+      matrix:
+        include:
+          - ref: main
+            env: in-main
+          - ref-prefix: test-
+            env: test
+    uses: ./.github/workflows/demo_call.yml
+    if: ${{ matrix.ref-prefix && startsWith(github.ref, matrix.ref-prefix) || github.ref == matrix.ref }}
+    with:
+      stuff: ${{ matrix.env }}
+
+
