@@ -1,0 +1,11 @@
+name: Test Vars and Secrets contexts
+description: Get secrets
+
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      run: echo ${{ vars.VAR_1 }}
+
+    - shell: bash
+      run: echo ${{ secrets.SECRET_1 }}

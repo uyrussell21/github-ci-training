@@ -38,3 +38,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo fourth job
+      - uses: ./.github/actions/test-vars
