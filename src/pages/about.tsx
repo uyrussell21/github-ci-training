@@ -16,6 +16,7 @@ const AboutPage: React.FC<PageProps> = () => {
       <div>
         <p>Using GitHub pages to deploy this Gatsby app</p>
         <div>Time now: {time}</div>
+        <div>version: 2</div>
       </div>
     </main>
   );
