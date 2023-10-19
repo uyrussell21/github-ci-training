@@ -10,3 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo got pr
+
+  second:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo running second
