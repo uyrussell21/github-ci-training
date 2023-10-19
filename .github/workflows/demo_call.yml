@@ -1,7 +1,6 @@
 name: Run Demo Call
 
 on:
-  push:
   workflow_call:
     inputs:
       stuff:
@@ -9,13 +8,12 @@ on:
         required: false
         default: "v2-fork-subdir-2"
         type: string
-  workflow_dispatch:
-    inputs:
       run_deploy:
         description: run boolean deploy
         required: false
         type: boolean
-        default: false
+        default: true
+  workflow_dispatch:
 
 jobs:
   tests:
