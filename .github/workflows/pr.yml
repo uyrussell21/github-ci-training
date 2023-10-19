@@ -4,12 +4,14 @@ on:
   pull_request:
     branches:
       - main
+      - test/*
 
 jobs:
   first:
     runs-on: ubuntu-latest
     steps:
       - run: echo got pr
+      - run: echo ${{ github.base_ref }}
 
   second:
     runs-on: ubuntu-latest
