@@ -11,7 +11,7 @@ on:
 
 jobs:
   Explore-GitHub-Actions:
-    if: inputs.environment  != ''
+    # if: inputs.environment  != ''
     environment: ${{ inputs.environment }}
     runs-on: ubuntu-latest
     steps:
