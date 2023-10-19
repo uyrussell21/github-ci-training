@@ -28,7 +28,7 @@ jobs:
       - name: echo secret
         env:
           supersecret: ${{ secrets.SECRET_1 }}
-        run: echo $supersecret
+        run: ./test-secret.sh $supersecret
 
   third:
     if: ${{ false }}
