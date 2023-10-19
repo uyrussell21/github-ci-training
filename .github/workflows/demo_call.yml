@@ -1,5 +1,5 @@
 name: Run Tests
-run-name: Running Matrix flow on ${{ github.ref }}
+run-name: Running Matrix flow on ${{ github.ref }} or ${{ github.ref_name }}
 
 on:
   workflow_call:
