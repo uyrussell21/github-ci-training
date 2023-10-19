@@ -27,5 +27,8 @@ jobs:
       github.ref == inputs.ref
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ inputs.stuff }}
+      - run: echo stuff:${{ inputs.stuff }}
+      - run: echo prefix:${{ inputs.ref-prefix }}
+      - run: echo ref:${{ inputs.ref }}
+      - run: echo github.ref_name:${{ github.ref_name }}
       - run: echo "Finished 1"
