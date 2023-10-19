@@ -1,13 +1,15 @@
 name: Run Demo Call
 
-on:
+on: 
   workflow_call:
-    inputs:
+    inputs: &inputs
       stuff:
         description: "Testing stuff"
         required: false
         default: "v2-fork-subdir-2"
         type: string    
+  workflow_dispatch:
+    inputs: *inputs
 
 jobs:
   tests:
