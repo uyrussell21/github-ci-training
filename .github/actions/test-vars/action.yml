@@ -20,5 +20,11 @@ runs:
       name: echo secret
 
     - shell: bash
-      run: echo ${{ inputs.secret1  == 'hello_secret' && 'right' || 'wrong' }}
-      name: echo secret condition
+      name: echo secret condition true
+      if: inputs.secret1 == 'hello_secret'
+      run: echo right
+
+    - shell: bash
+      name: echo secret condition false
+      if: inputs.secret1 != 'hello_secret'
+      run: echo wrong
