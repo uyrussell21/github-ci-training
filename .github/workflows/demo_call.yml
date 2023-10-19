@@ -9,6 +9,12 @@ on:
         default: "v2-fork-subdir-2"
         type: string
   workflow_dispatch:
+    inputs:
+      run_deploy:
+        description: run boolean deploy
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   tests:
@@ -48,3 +54,9 @@ jobs:
         with:
           var1: ${{ vars.VAR_1 }}
           secret1: ${{ secrets.SECRET_1 }}
+
+  fifth:
+    runs-on: ubuntu-latest
+    name: ${{ format('Diff{0}', inputs.run_deploy && ' and Deploy') }}
+    steps:
+      - run: echo diff
