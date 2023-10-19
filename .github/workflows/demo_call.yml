@@ -1,4 +1,4 @@
-name: Run Tests
+name: Run Demo Call
 
 on:
   workflow_call:
@@ -6,8 +6,14 @@ on:
       stuff:
         description: "Testing stuff"
         required: false
-        default: "v2-fork-subdir"
+        default: "v2-fork-subdir-2"
         type: string
+      run_deploy:
+        description: run boolean deploy
+        required: false
+        type: boolean
+        default: true
+  workflow_dispatch:
 
 jobs:
   tests:
@@ -15,3 +21,41 @@ jobs:
     steps:
       - run: echo ${{ inputs.stuff }}
       - run: echo "Finished 1"
+
+  second:
+    environment: test
+    needs:
+      - tests
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo second job
+
+  third:
+    if: ${{ false }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo never runs
+
+  fourth:
+    name: Fourth Job
+    environment: test
+    needs:
+      - third
+      - second
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - run: echo fourth job
+      - run: echo second:${{ needs.second.result }}
+      - run: echo third:${{ needs.third.result }}
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/test-vars
+        with:
+          var1: ${{ vars.VAR_1 }}
+          secret1: ${{ secrets.SECRET_1 }}
+
+  fifth:
+    runs-on: ubuntu-latest
+    name: ${{ format('Diff{0}', inputs.run_deploy && ' and Deploy') }}
+    steps:
+      - run: echo diff

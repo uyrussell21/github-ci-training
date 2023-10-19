@@ -1,0 +1,30 @@
+name: Test Vars and Secrets contexts
+description: Get secrets
+
+inputs:
+  var1:
+    description: var1
+    required: true
+  secret1:
+    description: secret1
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      run: echo ${{ inputs.var1 }}
+
+    - shell: bash
+      run: echo ${{ inputs.secret1 }}
+      name: echo secret
+
+    - shell: bash
+      name: echo secret condition true
+      if: inputs.secret1 == 'hello_secret'
+      run: echo right
+
+    - shell: bash
+      name: echo secret condition false
+      if: inputs.secret1 != 'hello_secret'
+      run: echo wrong
