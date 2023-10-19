@@ -1,11 +1,19 @@
 name: Test Vars and Secrets contexts
 description: Get secrets
 
+inputs:
+  var1:
+    description: var1
+    required: true
+  secret1:
+    description: secret1
+    required: true
+
 runs:
   using: "composite"
   steps:
     - shell: bash
-      run: echo ${{ vars.VAR_1 }}
+      run: echo ${{ inputs.var1 }}
 
     - shell: bash
-      run: echo ${{ secrets.SECRET_1 }}
+      run: echo ${{ inputs.secret1 }}
