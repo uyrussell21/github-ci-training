@@ -24,6 +24,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo second job
+      - name: echo secret condition true
+        if: secrets.SECRET_1 == 'hello_secret'
+        run: echo right
+
+      - name: echo secret condition false
+        if: secrets.SECRET_1 != 'hello_secret'
+        run: echo wrong
 
   third:
     if: ${{ false }}
