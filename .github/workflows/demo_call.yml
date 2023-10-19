@@ -1,13 +1,13 @@
 name: Run Demo Call
 
-on: 
+on:
   workflow_call:
     inputs:
       stuff:
         description: "Testing stuff"
         required: false
         default: "v2-fork-subdir-2"
-        type: string    
+        type: string
   workflow_dispatch:
 
 jobs:
@@ -18,6 +18,8 @@ jobs:
       - run: echo "Finished 1"
 
   second:
+    needs:
+      - tests
     runs-on: ubuntu-latest
     steps:
       - run: echo second job
