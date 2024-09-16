@@ -1,3 +1,4 @@
+import TestComp from "@components/Test";
 import { PageProps } from "gatsby";
 import React, { useEffect, useState } from "react";
 
@@ -17,6 +18,9 @@ const AboutPage: React.FC<PageProps> = () => {
         <p>Using GitHub pages to deploy this Gatsby app</p>
         <div>Time now: {time}</div>
       </div>
+
+      <TestComp inner={"danger prop"} />
+      <div dangerouslySetInnerHTML={{ __html: "page danger" }} />
     </main>
   );
 };
